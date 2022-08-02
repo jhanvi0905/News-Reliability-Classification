@@ -1,0 +1,37 @@
+Pre-processing:
+
+1. RegEx is used to replace the punctuations and various alphanumeric sequences that are impertinent.
+2. Stopwords are removed using dict based regex as dictionary look up time is faser than lists and sets.
+3. Data Insights: Classes are Balanced, subject/word based classification.
+3. Justification: No Spacy based NLP pipelines, since I don't need the other components of its pipeline such as NER, parser or tagger and even excluding that from pipeline- comparing tokens against stopwords will take much longer to process 20,000 docs.
+4. Justification: NLTK's stopwords and pre-processing is too much slow - stopwords can be excluded faster with RegEx in comparison, lemmatization is too much time taking process considering given time constraints.
+
+Model:
+
+1. Vectorizer and Classifier Model Pipeline Approach is followed
+2. Tfidf vectorizer is chosen
+Factors :
+    - Reliability seems to have more to do with words/subjects that occur in document rather than context of the document. (Using WordCloud Inference)
+    - Faster and Quicker/ Embeddings are memory expensive and doesn't bring a lot difference in the results with normal/non-deep learning classification algorithms.
+3. SGD Classifier:
+Factors:
+    - The Classifier provides the base possible good result
+    - Lack of Computational and Memory Resources to load pre-trained Embeddings and train it as a deep Neural Model.
+
+Evaluation And Metrics:
+
+1. Derived Accuracy as a base measure.
+2. Precision, Recall and F1-Score computed for each class - to weigh suitably on which classes are being identified correctly.
+3. In the present scenario unreliable articles have a higher f1-score in comparison to reliable ones.
+
+Overall Approach:
+
+The overall approach is defined to be done with ease in given time frame and within available computational constraints.
+
+Aspects that could be Improved:
+
+1. Using pre-trained embeddings as vectorizer and using it with deep learning RNNs or LSTM units.
+2. The pre-processing can include summarization- using Top2Vec model where in dominant topic words for each article could shorten the sequence for quicker classification.
+
+
+
