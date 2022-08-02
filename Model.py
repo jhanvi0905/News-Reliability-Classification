@@ -14,6 +14,20 @@ import numpy as np
 
 class ModelPipeline:
 
+    """"Creates Vectorizer and classification Pipeline to make predictions on unseen data
+
+        Parameters
+        ----------
+        vectorizer : vectorizer object
+        classifier: classifier object
+        dataset: training data 
+
+        Returns
+        -------
+        Predictions
+        Classifier Model
+    """""
+
     def __init__(self, vectorizer, classifier, dataset):
         self.vectorizer = vectorizer
         self.classifier = classifier

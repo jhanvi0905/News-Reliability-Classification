@@ -11,6 +11,19 @@ import random
 
 class PreprocessData:
 
+    """"Takes Dataset in csv format, loads, cleans and batches it into model readable format
+        
+    Parameters
+    ----------
+    link_to_corpus : str
+    stopwords_dict: dictionary of stopwords
+    
+    Functions 
+    -------
+    Returns Cleaned DataFrame Object 
+    Yields Data Insights
+    """""
+
     def __init__(self, link_to_corpus, stopwords_dict):
 
         self.stopwords_dict = stopwords_dict
@@ -28,6 +41,7 @@ class PreprocessData:
         clean_df = pd.DataFrame()
         flag = ('label' in data.columns)
 
+        # Looping over articles to clean them
         for article in range(len(data['text'])):
             if type(data['text'][article]) == str:
                 removed_numbers_text = re.sub(r'[0-9]+', '', data['text'][article])
@@ -60,6 +74,7 @@ class PreprocessData:
         print("\nInstances for each class:")
         print(train_dataset['label'].value_counts())
 
+        # Word Clouds for reliable and Unreliable Data
         reliable_train_index = [i for i, o in enumerate(train_dataset['label']) if o == 0]
         reliable_articles = np.array(train_dataset['text'])[reliable_train_index]
         wordcloud_reliable = WordCloud(background_color='black', stopwords=self.stopwords_dict.keys(), random_state=42,
