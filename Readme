@@ -16,7 +16,7 @@ Factors :
 3. SGD Classifier:
 Factors:
     - The Classifier provides the base possible good result
-    - Lack of Computational and Memory Resources to load pre-trained Embeddings and train it as a deep Neural Model.
+    - Lack of Computational and Memory Resources to load pre-trained Embeddings and train a deep Neural Model instead.
 
 Evaluation And Metrics:
 
